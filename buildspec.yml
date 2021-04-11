@@ -17,7 +17,7 @@ phases:
     commands:
       - echo '***** run tests:'
       - npm test -- > testresult.txt
-      - docker build -t nodeImage .
+      - docker build -t nodeimage .
   post_build:
     commands:
       - printf '[{"name":"example-backend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
