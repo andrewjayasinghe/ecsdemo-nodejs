@@ -1,4 +1,14 @@
 apiVersion: apps/v1
+kind: Service
+metadata:
+  name: ecsdemo-nodejs
+spec:
+  selector:
+    app: ecsdemo-nodejs
+  ports:
+   -  protocol: TCP
+      port: 80
+      targetPort: 3000
 kind: Deployment
 metadata:
   name: ecsdemo-nodejs
