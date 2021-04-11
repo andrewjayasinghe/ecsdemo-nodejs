@@ -7,17 +7,17 @@ phases:
       - export ACCOUNT=$(echo $CODEBUILD_BUILD_ARN |cut -f5 -d:)
       - echo '***** This is the current env:'
       - printenv
-      #- echo '***** Download nodejs repo:'
-      #- curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-      #- echo '***** install nodejs:'
-      #- apt-get install -y nodejs build-essential
-      #- echo '***** install our npms:'
-      #- npm install
+      - echo '***** Download nodejs repo:'
+      - curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+      - echo '***** install nodejs:'
+      - apt-get install -y nodejs build-essential
+      - echo '***** install our npms:'
+      - npm install
   build:
     commands:
-      #- echo '***** run tests:'
-      #- npm test -- > testresult.txt
-      # - docker build -t myimage .
+      - echo '***** run tests:'
+      - npm test -- > testresult.txt
+      - docker build -t myimage .
   post_build:
     commands:
       - printf '[{"name":"example-backend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
